@@ -17,8 +17,8 @@ const banner = require( './banner.js' );
 
 // Populate Bootstrap version specific variables.
 let bsVersion = 5;
-let bsSrcFile = 'bootstrap.js';
-let fileDest = 'child-theme';
+let adminSrcFile = 'admin/admin.js';
+let fileDest = 'admin';
 let globals = {
 	jquery: 'jQuery', // Ensure we use jQuery which is always available even in noConflict mode
 	'@popperjs/core': 'Popper',
@@ -42,12 +42,9 @@ const plugins = [
 ];
 
 module.exports = {
-	input: [
-		path.resolve( __dirname, `../js/${ bsSrcFile }` ),
-		path.resolve( __dirname, '../js/skip-link-focus-fix.js' ),
-		path.resolve( __dirname, '../js/custom-javascript.js' ),
-		path.resolve( __dirname, '../js/search-area.js' ),
-	],
+	input: {
+		'admin': path.resolve( __dirname, `../${ adminSrcFile }` ),
+	},
 	output: [
 		{
 			banner: banner(''),

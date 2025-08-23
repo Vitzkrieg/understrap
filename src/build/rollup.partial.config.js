@@ -9,6 +9,7 @@ const { nodeResolve } = require( '@rollup/plugin-node-resolve' );
 const commonjs = require( '@rollup/plugin-commonjs' );
 const multi = require( '@rollup/plugin-multi-entry' );
 const replace = require( '@rollup/plugin-replace' );
+const terser = require( '@rollup/plugin-terser' );
 
 /**
  * Internal dependencies
@@ -17,8 +18,6 @@ const banner = require( './banner.js' );
 
 // Populate Bootstrap version specific variables.
 let bsVersion = 5;
-let bsSrcFile = 'bootstrap.js';
-let fileDest = 'child-theme';
 let globals = {
 	jquery: 'jQuery', // Ensure we use jQuery which is always available even in noConflict mode
 	'@popperjs/core': 'Popper',
@@ -38,32 +37,53 @@ const plugins = [
 	} ),
 	nodeResolve(),
 	commonjs(),
-	multi(),
 ];
 
-module.exports = {
-	input: [
-		path.resolve( __dirname, `../js/${ bsSrcFile }` ),
-		path.resolve( __dirname, '../js/skip-link-focus-fix.js' ),
-		path.resolve( __dirname, '../js/custom-javascript.js' ),
-		path.resolve( __dirname, '../js/search-area.js' ),
-	],
-	output: [
-		{
-			banner: banner(''),
-			file: path.resolve( __dirname, `../../js/${ fileDest }.js` ),
-			format: 'umd',
-			globals,
-			name: 'understrap',
+const pluginTerser = terser( {
+	output: {
+		comments: false,
+	},
+	compress: {
+		drop_console: true,
+		drop_debugger: true,
+	},
+} );
+
+const pluginsMin = plugins.concat( [ pluginTerser ] );
+
+module.exports = [
+	{
+		input: {
+			'calendar': path.resolve( __dirname, `../partial/calendar.js` ),
 		},
-		{
-			banner: banner(''),
-			file: path.resolve( __dirname, `../../js/${ fileDest }.min.js` ),
-			format: 'umd',
-			globals,
-			name: 'understrap',
+		output: [
+			{
+				banner: banner(''),
+				dir: path.resolve( __dirname, `../../js/partial/` ),
+				entryFileNames: `[name].js`,
+				format: 'umd',
+				globals,
+				name: 'understrapChild',
+			},
+		],
+		external,
+		plugins,
+	},
+	{
+		input: {
+			'calendar': path.resolve( __dirname, `../partial/calendar.js` ),
 		},
-	],
-	external,
-	plugins,
-};
+		output: [
+			{	
+				banner: banner(''),
+				dir: path.resolve( __dirname, `../../js/partial/` ),
+				entryFileNames: `[name].min.js`,
+				format: 'umd',
+				globals,
+				name: 'understrapChild',
+			},
+		],
+		external,
+		plugins: pluginsMin,
+	},
+];
