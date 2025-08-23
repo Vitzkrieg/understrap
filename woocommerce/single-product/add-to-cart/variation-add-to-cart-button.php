@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 ?>
-<div class="woocommerce-variation-add-to-cart variations_button">
+<div class="woocommerce-variation-add-to-cart variations_button d-flex my-3">
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	<?php
@@ -19,6 +19,7 @@ global $product;
 
 	woocommerce_quantity_input(
 		array(
+			'classes'     => 'input-text qty text form-control lh-lg',
 			'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
 			'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
 			'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized

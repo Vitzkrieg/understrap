@@ -22,6 +22,7 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 }
 
 ?>
+<div class="column mb-4">
 <div class="woocommerce-form-coupon-toggle">
 	<?php
 		/**
@@ -49,3 +50,4 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 
 	<div class="clear"></div>
 </form>
+</div>
