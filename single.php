@@ -29,11 +29,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 				while ( have_posts() ) {
 					the_post();
 					$post_type = get_post_type();
-					$template_exists = get_template_part( 'loop-templates/content', $post_type );
-					if ( $template_exists === false ) {
-						// Fallback to default single post content template if specific one doesn't exist
-						get_template_part( 'loop-templates/content', 'single' );
-					}
+					$template = locate_template( 'loop-templates/content-' . $post_type . '.php' );
+					if (empty($template)) $post_type = 'single';
+					get_template_part( 'loop-templates/content', $post_type );
 					understrap_post_nav();
 
 					// If comments are open or we have at least one comment, load up the comment template.
