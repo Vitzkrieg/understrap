@@ -108,3 +108,12 @@ figure.woocommerce-product-gallery__wrapper {
 .woocommerce-page form .show-password-input {
 	top: initial;
 }
+
+
+.ihl-products {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
