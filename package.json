@@ -86,6 +86,7 @@
     "terser": "^5.29.2"
   },
   "dependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
     "zip-lib": "^1.1.2"
   }
 }
