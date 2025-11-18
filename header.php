@@ -10,7 +10,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-$bootstrap_version = get_theme_mod( 'understrap_bootstrap_version', 'bootstrap4' );
+$bootstrap_version = 'bootstrap5';
 $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 ?>
 <!DOCTYPE html>
