@@ -117,3 +117,14 @@ figure.woocommerce-product-gallery__wrapper {
 	margin: 0;
 	padding: 0;
 }
+
+.woocommerce {
+	span.onsale {
+		width: 44px;
+		height: 44px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--bs-secondary);
+	}
+}

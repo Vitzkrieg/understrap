@@ -12374,6 +12374,15 @@ figure.woocommerce-product-gallery__wrapper {
   padding: 0;
 }
 
+.woocommerce span.onsale {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bs-secondary);
+}
+
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
