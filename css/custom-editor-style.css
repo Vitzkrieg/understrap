@@ -6632,6 +6632,10 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   border: 1px solid transparent;
 }
 
+.wp-element-button {
+  background-color: var(--bs-button-color);
+}
+
 .components-circular-option-picker__option {
   border-radius: 50%;
 }

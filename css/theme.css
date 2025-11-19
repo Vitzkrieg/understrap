@@ -12274,6 +12274,10 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   border: 1px solid transparent;
 }
 
+.wp-element-button {
+  background-color: var(--bs-button-color);
+}
+
 /*
 * Use existing Bootstrap 4/5 classes and
 * variables to extend - override CF7 style
@@ -12381,6 +12385,10 @@ figure.woocommerce-product-gallery__wrapper {
   justify-content: center;
   align-items: center;
   background-color: var(--bs-secondary);
+}
+
+.wc-block-components-button {
+  background-color: var(--bs-button-color);
 }
 
 /*!
