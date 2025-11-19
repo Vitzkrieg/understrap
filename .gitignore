@@ -52,3 +52,6 @@ dist/
 dist-product/
 **/img
 artifacts/
+
+# Config files
+config.env
